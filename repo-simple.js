@@ -30,8 +30,7 @@ class SimpleTemplate extends BasicTemplate {
         repoContent.appendChild(repoUserAvatar)
 
         fetch(
-            'https://api.github.com/repos/' + repoData['full_name'] + '/releases/latest',
-            headers
+            'https://api.github.com/repos/' + repoData['full_name'] + '/releases/latest'
         )
         .then( response => {
             if (!response.ok) {
