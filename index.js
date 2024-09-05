@@ -1,8 +1,3 @@
-const headers = {
-    method: 'GET',  // 请求类型
-    headers: authHeaders
-}
-
 let repoTemps = []
 
 function fetchRepoData(input) {
@@ -14,10 +9,7 @@ function fetchRepoData(input) {
     repoButton.style.display = 'none'
     repoFetchFlag.style.display = 'block'
 
-    fetch(
-        'https://api.github.com/repos/' + userRepo,
-        headers
-    )
+    fetch('https://api.github.com/repos/' + userRepo)
     .then( response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
