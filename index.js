@@ -3,9 +3,12 @@ let repoTemps = []
 function fetchRepoData(input) {
     const userRepo = extractUserRepo(input)
 
+    const tempList = document.getElementById('tempList')
     const repoButton = document.getElementById('repoForwardIcon')
     const repoFetchFlag = document.getElementById('repoFetchingIcon')
 
+    tempList.innerHTML = ''
+    tempList.appendChild(createMona())
     repoButton.style.display = 'none'
     repoFetchFlag.style.display = 'block'
 
@@ -81,3 +84,11 @@ function onPageReady() {
     });
 }
 
+function createMona() {
+    const mona = document.createElement('img')
+    mona.setAttribute('src', 'mona.gif')
+    mona.style.width = '64px'
+    mona.style.height = '64px'
+
+    return mona
+}
