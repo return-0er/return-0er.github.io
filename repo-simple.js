@@ -5,16 +5,25 @@ class SimpleTemplate extends BasicTemplate {
     getTag() {
         return 'simple'
     }
+    setForegroundColor(color) {
+        const repoTitle = document.getElementById('repoTitle-simple')
+        const repoDesc = document.getElementById('repoDesc-simple')
+        const repoUserAvatar = document.getElementById('repoUserAvatar-simple')
+
+        repoTitle.style.color = color
+        repoDesc.style.color = color
+        repoUserAvatar.style.borderColor = color
+    }
     getContent(repoData) {
         const repoContent = document.createElement('div')
         repoContent.classList.add('repoContentSimple')
 
         const repoTitle = document.createElement('div')
-        repoTitle.id = 'repoTitle'
+        repoTitle.id = 'repoTitle-simple'
         repoTitle.classList.add('repoTitleSimple')
 
         const repoDesc = document.createElement('div')
-        repoDesc.id = 'repoDesc'
+        repoDesc.id = 'repoDesc-simple'
         repoDesc.classList.add('repoDescSimple')
 
         const repoRelease = document.createElement('img')
@@ -24,7 +33,7 @@ class SimpleTemplate extends BasicTemplate {
         repoRelease.setAttribute('crossorigin', 'anonymous')
 
         const repoUserAvatar = document.createElement('img')
-        repoUserAvatar.id = 'repoUserAvatar'
+        repoUserAvatar.id = 'repoUserAvatar-simple'
         repoUserAvatar.classList.add('repoUserAvatarSimple')
 
         repoContent.appendChild(repoTitle)

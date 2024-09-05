@@ -26,7 +26,7 @@ class BasicTemplate {
             this.setBackgroundColor(color)
         })
         const fgColorPicker = this.createColorPicker('FG: ', '#ffffff', (color) => {
-            // this.setBackgroundColor(colorPicker.value)
+            this.setForegroundColor(color)
         })
         actionBox.appendChild(bgColorPicker)
         actionBox.appendChild(fgColorPicker)
