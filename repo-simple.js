@@ -2,6 +2,9 @@ class SimpleTemplate extends BasicTemplate {
     getTemplateName() {
         return 'simple'
     }
+    getTag() {
+        return 'simple'
+    }
     getContent(repoData) {
         const repoContent = document.createElement('div')
         repoContent.classList.add('repoContentSimple')

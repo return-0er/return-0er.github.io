@@ -9,10 +9,12 @@
 
 .repoTitleSimple {
     font-size: 50pt;
+    color: white;
 }
 
 .repoDescSimple {
     font-size: 32pt;
+    color: white;
     margin-top: 16px;
     text-align: center;
     max-lines: 3;

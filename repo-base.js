@@ -10,7 +10,7 @@ class BasicTemplate {
         wrapper.classList.add('repoBoxWrapper')
 
         const repoBox = document.createElement('div')
-        repoBox.id = 'repoBox'
+        repoBox.id = 'repoBox-' + this.getTag()
         repoBox.classList.add('repoBox')
 
         repoBox.appendChild(this.getContent(repoData))
@@ -20,13 +20,25 @@ class BasicTemplate {
         container.appendChild(wrapper)
 
         const actionBox = document.createElement('div')
-        actionBox.style.marginTop = '16px'
-        actionBox.style.marginBottom = '16px'
+        actionBox.classList.add('actionBox')
+
+        const bgColorPicker = this.createColorPicker('BG: ', '#5f9ea0', (color) => {
+            this.setBackgroundColor(color)
+        })
+        const fgColorPicker = this.createColorPicker('FG: ', '#ffffff', (color) => {
+            // this.setBackgroundColor(colorPicker.value)
+        })
+        actionBox.appendChild(bgColorPicker)
+        actionBox.appendChild(fgColorPicker)
         actionBox.appendChild(this.createDownloadButton(repoBox))
 
         container.appendChild(actionBox)
 
         return container
+    }
+
+    getTag() {
+        throw new Error('getTag not implemented')
     }
 
     getContent(repoData) {
@@ -35,6 +47,35 @@ class BasicTemplate {
 
     getTemplateName() {
         throw new Error('getTemplateName not implemented')
+    }
+
+    setBackgroundColor(color) {
+        const repoBox = document.getElementById('repoBox-' + this.getTag())
+        repoBox.style.backgroundColor = color
+    }
+
+    setForegroundColor(color) {
+        throw new Error('setForegroundColor not implemented')
+    }
+
+    createColorPicker(title, initColor, onColorChange) {
+        const div = document.createElement('div')
+        div.style.marginRight = '8px'
+
+        const pre = document.createElement('b')
+        pre.innerText = title
+
+        const colorPicker = document.createElement('input')
+        colorPicker.setAttribute('type', 'color')
+        colorPicker.setAttribute('value', initColor)
+        colorPicker.oninput = () => {
+            onColorChange(colorPicker.value)
+        }
+
+        div.appendChild(pre)
+        div.appendChild(colorPicker)
+    
+        return div
     }
 
     createDownloadButton(captureEle) {

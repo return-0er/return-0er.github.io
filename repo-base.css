@@ -9,7 +9,7 @@
     width: 1280px;
     height: 640px;
     box-sizing: border-box;
-    background-color: cadetblue;
+    background-color: #5f9ea0;
     padding: 40pt;
 
     transform: scale(0.5);
@@ -24,4 +24,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.actionBox {
+    display: flex;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
