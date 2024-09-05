@@ -7,37 +7,34 @@
     <title>Repo preview generator</title>
     <script src="https://unpkg.com/sober/dist/sober.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="headers.js"></script>
     <script src="index.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <script src="repo-base.js"></script>
+    <script src="repo-simple.js"></script>
+    <!-- <script src="dom-to-image.min.js"></script> -->
+    <link rel="stylesheet" href="styles.css" >
+    <link rel="stylesheet" href="repo-base.css" >
+    <link rel="stylesheet" href="repo-simple.css" >
 </head>
 
-<body>
-    <!-- <button id="capture">Capture Element</button>
-    <button id="download" style="display:none;">Download Image</button>
-    <button id="fetchData">Fetch GitHub Data</button> -->
-    <s-page>
-        <s-text-field theme="dark" label="User/Repo">
-            <input type="text">
-            <s-icon-button slot="end">
-                <s-icon type="arrow_forward"></s-icon>
+<body style="margin: 0px; padding: 0px; min-width: 640px;">
+    <div id="repoHiddenContainer" class="repoBoxWrapperHidden" style="position: absolute; left: -9999px; top: -9999px;">
+    </div>
+    <s-page class="pageRoot" theme="auto">
+        <s-text-field label="User/Repo">
+            <input id="repoInput" type="text">
+            <s-icon-button id="repoButton" slot="end">
+                <s-icon id="repoForwardIcon" type="arrow_forward"></s-icon>
+                <s-circular-progress id="repoFetchingIcon" indeterminate="true" style="display: none; width: 20px; height: 20px;"></s-circular-progress>
             </s-icon-button>
         </s-text-field>
-        <s-button id="capture">Capture</s-button>
-        <s-button id="download" style="display:none;">Download</s-button>
-        <s-button id="fetchData">Fetch GitHub Data</s-button>
-
-
-        <div id="element-to-capture" style="width: 200px; height: 200px; background: lightblue; margin-top: 20px;">
-            This is the element to capture.
-        </div>
+        <div id="tempList" style="min-height: 600px; margin-top: 32px;"></div>
     </s-page>
 
-    <div id="jsonOutput"
-        style="margin-top: 20px; white-space: pre-wrap; background: #f0f0f0; padding: 10px; border: 1px solid #ddd;">
-        <!-- JSON 数据将显示在这里 -->
-    </div>
+
 </body>
 <script>
     onPageReady()
 </script>
+
 </html>

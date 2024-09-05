@@ -1,51 +1,91 @@
-let imgData = '';
+const headers = {
+    method: 'GET',  // 请求类型
+    headers: authHeaders
+}
 
-function element2ImgData(id) {
-    
+let repoTemps = []
+
+function fetchRepoData(input) {
+    const userRepo = extractUserRepo(input)
+
+    const repoButton = document.getElementById('repoForwardIcon')
+    const repoFetchFlag = document.getElementById('repoFetchingIcon')
+
+    repoButton.style.display = 'none'
+    repoFetchFlag.style.display = 'block'
+
+    fetch(
+        'https://api.github.com/repos/' + userRepo,
+        headers
+    )
+    .then( response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // 将响应解析为 JSON
+    })
+    .then( data => {
+        fillRepoList(data)
+
+        repoButton.style.display = 'block'
+        repoFetchFlag.style.display = 'none'
+        // let jsonStr = JSON.stringify(data, null, 2); // 格式化输出 JSON 数据
+    })
+    .catch( error => {
+        repoButton.style.display = 'block'
+        repoFetchFlag.style.display = 'none'
+        console.error('There was a problem with the fetch operation:', error);
+    });
+}
+
+function extractUserRepo(input) {
+    const fullUrlRegex = /(?:https:\/\/)?(?:www\.)?github\.com\/([^\/]+\/[^\/]+)(?:\.git)?$/;
+    const userRepoRegex = /^[^\/]+\/[^\/]+$/;
+
+    // 如果包含 GitHub 域名部分，使用正则匹配
+    if (input.includes("github.com")) {
+        const match = input.match(fullUrlRegex);
+        return match ? match[1] : null;
+    }
+
+    // 如果不包含 GitHub 域名部分，检查是否为 user/repo 格式
+    if (userRepoRegex.test(input)) {
+        return input;
+    }
+
+    // 如果既不是完整链接，也不是 user/repo 格式，返回 null
+    return null;
+}
+
+function fillRepoList(repoData) {
+    const tempList = document.getElementById('tempList')
+    tempList.innerHTML = ''
+    repoTemps.forEach((temp) => {
+        tempList.appendChild(temp.getElement(repoData))
+    })
 }
 
 function onPageReady() {
-    document.getElementById('capture').addEventListener('click', function() {
-        const element = document.getElementById('element-to-capture');
-        html2canvas(element).then(canvas => {
-            imgData = canvas.toDataURL('image/png');
-    
-            // 创建一个图片标签来显示生成的图片（可选）
-            const img = document.createElement('img');
-            img.src = imgData;
-            document.body.appendChild(img);
-    
-            // 显示下载按钮
-            document.getElementById('download').style.display = 'inline-block';
-        });
+
+    repoTemps = [
+        new SimpleTemplate()
+    ]
+
+    const repoInput = document.getElementById('repoInput');
+    const repoButton = document.getElementById('repoButton');
+
+    // 回车事件
+    repoInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && repoInput.value.trim() !== '') {
+            fetchRepoData(repoInput.value.trim());
+        }
     });
-    
-    document.getElementById('download').addEventListener('click', function () {
-        const a = document.createElement('a');
-        a.href = imgData;
-        a.download = 'captured-image.png';  // 指定下载文件的名称
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);  // 下载后移除临时创建的链接
-    });
-    
-    document.getElementById('fetchData').addEventListener('click', function () {
-        fetch('https://api.github.com/repos/boybeak/JustTodo')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json(); // 将响应解析为 JSON
-            })
-            .then(data => {
-                const jsonOutput = document.getElementById('jsonOutput');
-                jsonOutput.textContent = JSON.stringify(data, null, 2); // 格式化输出 JSON 数据
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-                const jsonOutput = document.getElementById('jsonOutput');
-                jsonOutput.textContent = `Error: ${error.message}`;
-            });
+
+    // 点击事件
+    repoButton.addEventListener('click', function() {
+        if (repoInput.value.trim() !== '') {
+            fetchRepoData(repoInput.value.trim());
+        }
     });
 }
 

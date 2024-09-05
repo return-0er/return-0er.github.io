@@ -1,0 +1,34 @@
+.repoContentSimple {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.repoTitleSimple {
+    font-size: 50pt;
+}
+
+.repoDescSimple {
+    font-size: 32pt;
+    margin-top: 16px;
+}
+
+.repoReleaseSimple {
+    width: auto;
+    height: 48px;
+    margin-top: 16px;
+}
+
+.repoUserAvatarSimple {
+    width: 128px;
+    height: 128px;
+    box-sizing: border-box;
+    object-fit: cover;
+    border-radius: 50%;
+    border: solid 2px white;
+
+    margin-top: 32px;
+}
