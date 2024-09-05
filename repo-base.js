@@ -18,7 +18,13 @@ class BasicTemplate {
         wrapper.appendChild(repoBox)
 
         container.appendChild(wrapper)
-        container.appendChild(this.createDownloadButton(repoBox))
+
+        const actionBox = document.createElement('div')
+        actionBox.style.marginTop = '16px'
+        actionBox.style.marginBottom = '16px'
+        actionBox.appendChild(this.createDownloadButton(repoBox))
+
+        container.appendChild(actionBox)
 
         return container
     }

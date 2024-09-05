@@ -31,7 +31,7 @@
     box-sizing: border-box;
     object-fit: cover;
     border-radius: 50%;
-    border: solid 2px white;
+    border: solid 4px white;
 
     margin-top: 32px;
 }
