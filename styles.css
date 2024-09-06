@@ -5,8 +5,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 160px;
     margin: 0px;
+}
+
+.navigationIcon {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    border-width: 2px; 
+    border-color: white;
+    border-style: solid;
+}
+
+.navigationTitle {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.slogan {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+
+    margin-top: 160px;
 }
 
 #repoInput {

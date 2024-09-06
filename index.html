@@ -6,34 +6,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beauty Repo</title>
     <link rel="icon" href="logo.png" type="image/png">
-    <script src="https://unpkg.com/sober/dist/sober.min.js"></script>
+    <script src="sober.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7J6Q6ZNZ4"></script>
+
     <script src="index.js"></script>
     <script src="repo-base.js"></script>
     <script src="repo-simple.js"></script>
     <!-- <script src="dom-to-image.min.js"></script> -->
-    <link rel="stylesheet" href="styles.css" >
-    <link rel="stylesheet" href="repo-base.css" >
-    <link rel="stylesheet" href="repo-simple.css" >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="repo-base.css">
+    <link rel="stylesheet" href="repo-simple.css">
 </head>
 
-<body style="margin: 0px; padding: 0px; min-width: 640px;">
+<body style="width: 100%; height: 100%; margin: 0px; padding: 0px; min-width: 640px;">
     <div id="repoHiddenContainer" class="repoBoxWrapperHidden" style="position: absolute; left: -9999px; top: -9999px;">
     </div>
     <s-page class="pageRoot" theme="auto">
-        <s-text-field label="User/Repo">
-            <input id="repoInput" type="text">
+        <div style="width: 100%;">
+            <s-appbar style="width: auto;">
+                <!--左侧菜单按钮-->
+                <s-icon-button slot="navigation">
+                    <img id="navIcon" class="navigationIcon" src="mona.gif" onclick="openMyGithub()">
+                </s-icon-button>
+                <!--标题-->
+                <div class="navigationTitle" slot="headline"><b>Beauty Repo</b></div>
+
+                <!--右侧操作按钮-->
+                <s-tooltip slot="action">
+                    <s-icon-button slot="trigger" onclick="openBlog()">
+                        <s-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <title>newspaper</title>
+                                <path
+                                    d="M20,11H4V8H20M20,15H13V13H20M20,19H13V17H20M11,19H4V13H11M20.33,4.67L18.67,3L17,4.67L15.33,3L13.67,4.67L12,3L10.33,4.67L8.67,3L7,4.67L5.33,3L3.67,4.67L2,3V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V3L20.33,4.67Z" />
+                            </svg>
+                        </s-icon>
+                    </s-icon-button>
+                    My blog
+                </s-tooltip>
+
+                <s-popup-menu slot="action">
+                    <s-tooltip slot="trigger">
+                        <s-icon-button slot="trigger">
+                            <s-icon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <title>android</title>
+                                    <path
+                                        d="M16.61 15.15C16.15 15.15 15.77 14.78 15.77 14.32S16.15 13.5 16.61 13.5H16.61C17.07 13.5 17.45 13.86 17.45 14.32C17.45 14.78 17.07 15.15 16.61 15.15M7.41 15.15C6.95 15.15 6.57 14.78 6.57 14.32C6.57 13.86 6.95 13.5 7.41 13.5H7.41C7.87 13.5 8.24 13.86 8.24 14.32C8.24 14.78 7.87 15.15 7.41 15.15M16.91 10.14L18.58 7.26C18.67 7.09 18.61 6.88 18.45 6.79C18.28 6.69 18.07 6.75 18 6.92L16.29 9.83C14.95 9.22 13.5 8.9 12 8.91C10.47 8.91 9 9.24 7.73 9.82L6.04 6.91C5.95 6.74 5.74 6.68 5.57 6.78C5.4 6.87 5.35 7.08 5.44 7.25L7.1 10.13C4.25 11.69 2.29 14.58 2 18H22C21.72 14.59 19.77 11.7 16.91 10.14H16.91Z" />
+                                </svg>
+                            </s-icon>
+                        </s-icon-button>
+                        My android libraries
+                    </s-tooltip>
+
+
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/AnyAdapter')">AnyAdapter</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/iCamera')">iCamera</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/A2WebCanvas')">A2WebCanvas</s-popup-menu-item>
+                    <s-popup-menu-item onclick="openPage('https\://github.com/boybeak/v8x')">v8x</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/VideoCompressor')">VideoCompressor</s-popup-menu-item>
+                </s-popup-menu>
+
+                <s-popup-menu slot="action">
+                    <s-tooltip slot="trigger">
+                        <s-icon-button slot="trigger">
+                            <s-icon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <title>apple-finder</title>
+                                    <path
+                                        d="M8 11C7.45 11 7 10.55 7 10V8C7 7.45 7.45 7 8 7C8.55 7 9 7.45 9 8V10C9 10.55 8.55 11 8 11M17 10V8C17 7.45 16.55 7 16 7C15.45 7 15 7.45 15 8V10C15 10.55 15.45 11 16 11C16.55 11 17 10.55 17 10M22 5V20C22 21.1 21.1 22 20 22H4C2.9 22 2 21.1 2 20V5C2 3.9 2.9 3 4 3H20C21.1 3 22 3.9 22 5M4 20L13.06 20C12.96 19.35 12.89 18.64 12.83 17.94C12.56 17.96 12.3 18 12 18C8.24 18 6.31 15.73 6.23 15.63C5.88 15.21 5.94 14.58 6.36 14.22C6.78 13.87 7.41 13.93 7.77 14.35C7.83 14.43 9.23 16 12 16C12.27 16 12.5 15.97 12.74 15.95C12.71 14.75 12.73 13.74 12.74 13.26H10.93C10.28 13.26 9.75 12.7 9.75 12C9.77 11.75 10.07 7.82 11 5H4L4 20M20 20L20 5H12.6C11.74 7.19 11.37 10.73 11.27 11.76H13.08C13.72 11.76 14.25 12.32 14.25 13C14.25 13.04 14.21 14.15 14.24 15.6C15.54 15.11 16.22 14.35 16.23 14.34C16.58 13.92 17.21 13.85 17.63 14.2C18.06 14.55 18.12 15.18 17.77 15.61C17.71 15.68 16.55 17.05 14.32 17.68C14.38 18.5 14.46 19.29 14.58 20H20Z" />
+                                </svg>
+                            </s-icon>
+                        </s-icon-button>
+                        My macOS apps & libraries
+                    </s-tooltip>
+
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/JustTodo')">JustTodo</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/DeskNote')">DeskNote</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/DeskPetsHome')">DeskPets</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/TranslatorDocs')">Translator</s-popup-menu-item>
+
+                    <s-divider></s-divider>
+
+                    <s-popup-menu-item onclick="openPage('https\://github.com/boybeak/Tray')">Tray</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/SwiftUIMaterialButton')">SwiftUIMaterialButton</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/SwiftUIWindow')">SwiftUIWindow</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/WinToEdge')">WinToEdge</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/WinDragger')">WinDragger</s-popup-menu-item>
+                    <s-popup-menu-item
+                        onclick="openPage('https\://github.com/boybeak/WinCapturer')">WinCapturer</s-popup-menu-item>
+                </s-popup-menu>
+            </s-appbar>
+        </div>
+
+        <h2 class="slogan">Make a beautiful preview for your repo</h2>
+        <s-text-field label="Type in your User/Repo or Github url" style="margin: 16px;">
+            <s-icon slot="start">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>github</title>
+                    <path
+                        d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                </svg>
+            </s-icon>
+            <input id="repoInput" type="text" style="font-weight: bold;">
             <s-icon-button id="repoButton" slot="end">
                 <s-icon id="repoForwardIcon" type="arrow_forward"></s-icon>
-                <s-circular-progress id="repoFetchingIcon" indeterminate="true" style="display: none; width: 20px; height: 20px;"></s-circular-progress>
+                <s-circular-progress id="repoFetchingIcon" indeterminate="true"
+                    style="display: none; width: 20px; height: 20px;"></s-circular-progress>
             </s-icon-button>
         </s-text-field>
-        <div id="tempList" style="min-height: 600px; margin-top: 32px; display: flex; flex-direction: column; align-items: center;">
+        <div id="tempList"
+            style="min-height: 480px; margin-top: 32px; display: flex; flex-direction: column; align-items: center;">
+        </div>
+        <s-divider></s-divider>
+        <div style="width: 100%; height: 144px;">
+
         </div>
     </s-page>
-
-
 </body>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-E7J6Q6ZNZ4');
+</script>
 <script>
     onPageReady()
 </script>

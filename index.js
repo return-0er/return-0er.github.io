@@ -82,6 +82,22 @@ function onPageReady() {
             fetchRepoData(repoInput.value.trim());
         }
     });
+
+    fetch('https://api.github.com/users/boybeak')
+    .then( response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // 将响应解析为 JSON
+    })
+    .then( data => {
+        const navIcon = document.getElementById('navIcon')
+        navIcon.setAttribute('src', data['avatar_url'])
+        // let jsonStr = JSON.stringify(data, null, 2); // 格式化输出 JSON 数据
+    })
+    .catch( error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
 }
 
 function createMona() {
@@ -91,4 +107,16 @@ function createMona() {
     mona.style.height = '64px'
 
     return mona
+}
+
+function openBlog() {
+    openPage('https://boybeak.github.io/')
+}
+
+function openMyGithub() {
+    openPage('https://github.com/boybeak')
+}
+
+function openPage(url) {
+    window.open(url, '_blank')
 }
