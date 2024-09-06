@@ -11,6 +11,7 @@
 .navigationIcon {
     width: 40px; 
     height: 40px;
+    box-sizing: border-box;
     border-radius: 50%; 
     border-width: 2px; 
     border-color: white;
@@ -18,18 +19,9 @@
 }
 
 .navigationTitle {
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
 }
 
 .slogan {
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
-
     margin-top: 160px;
 }
 
