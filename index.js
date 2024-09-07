@@ -92,7 +92,15 @@ function onPageReady() {
     })
     .then( data => {
         const navIcon = document.getElementById('navIcon')
-        navIcon.setAttribute('src', data['avatar_url'])
+        const footerUserAvatar = document.getElementById('footerUserAvatar')
+        const footerUserName = document.getElementById('footerUserName')
+
+        const avatarUrl = data['avatar_url']
+
+        navIcon.setAttribute('src', avatarUrl)
+        footerUserAvatar.setAttribute('src', avatarUrl)
+        footerUserName.innerText = data['name']
+        
         // let jsonStr = JSON.stringify(data, null, 2); // 格式化输出 JSON 数据
     })
     .catch( error => {
@@ -115,6 +123,18 @@ function openBlog() {
 
 function openMyGithub() {
     openPage('https://github.com/boybeak')
+}
+
+function openMyX() {
+    openPage('https://x.com/BeakInAir')
+}
+
+function sendMailToMe() {
+    openPage('mailto:boybeak@gmail.com')
+}
+
+function buyMeACoffee() {
+    openPage('https://1kafei.com/user/payment/new/boybeak/069DN2BH0I7/?referrer=/boybeak/')
 }
 
 function openPage(url) {

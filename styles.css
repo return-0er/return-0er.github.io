@@ -18,6 +18,16 @@
     border-style: solid;
 }
 
+.templateList {
+    min-height: 360px; 
+    margin-top: 32px; 
+
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    background-color: var(--s-color-background);
+}
+
 .navigationTitle {
 }
 
@@ -27,4 +37,28 @@
 
 #repoInput {
     width: 480px;
+}
+
+.footer {
+    width: 100%; 
+    box-sizing: border-box;
+
+    display: flex; 
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.footerUserAvatar {
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+    border: solid var(--s-color-on-background) 2px;
+}
+
+.footerUserName {
+    margin-top: 16px;
 }

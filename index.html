@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty Repo</title>
+    <title>Beauty Repo | Make a beautiful preview for your repo</title>
     <link rel="icon" href="logo.png" type="image/png">
     <script src="sober.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -131,11 +131,67 @@
                     style="display: none; width: 20px; height: 20px;"></s-circular-progress>
             </s-icon-button>
         </s-text-field>
-        <div id="tempList"
-            style="min-height: 480px; margin-top: 32px; display: flex; flex-direction: column; align-items: center;">
+        <div id="tempList" class="templateList">
         </div>
-        <s-divider></s-divider>
-        <div style="width: 100%; height: 144px;">
+        <!-- <s-divider style="width: 100%;"></s-divider> -->
+        <div class="footer">
+            <img id="footerUserAvatar" class="footerUserAvatar" src="mona.gif" onclick="openMyGithub()">
+            <b id="footerUserName" class="footerUserName" onclick="openMyGithub()"></b>
+            <div style="margin-top: 8px;">
+                <s-icon-button onclick="openMyGithub()">
+                    <s-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <title>github</title>
+                            <path
+                                d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                        </svg>
+                    </s-icon>
+                </s-icon-button>
+                <s-popup showalign="center">
+                    <s-icon-button slot="trigger">
+                        <s-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M9.5,4C5.36,4 2,6.69 2,10C2,11.89 3.08,13.56 4.78,14.66L4,17L6.5,15.5C7.39,15.81 8.37,16 9.41,16C9.15,15.37 9,14.7 9,14C9,10.69 12.13,8 16,8C16.19,8 16.38,8 16.56,8.03C15.54,5.69 12.78,4 9.5,4M6.5,6.5A1,1 0 0,1 7.5,7.5A1,1 0 0,1 6.5,8.5A1,1 0 0,1 5.5,7.5A1,1 0 0,1 6.5,6.5M11.5,6.5A1,1 0 0,1 12.5,7.5A1,1 0 0,1 11.5,8.5A1,1 0 0,1 10.5,7.5A1,1 0 0,1 11.5,6.5M16,9C12.69,9 10,11.24 10,14C10,16.76 12.69,19 16,19C16.67,19 17.31,18.92 17.91,18.75L20,20L19.38,18.13C20.95,17.22 22,15.71 22,14C22,11.24 19.31,9 16,9M14,11.5A1,1 0 0,1 15,12.5A1,1 0 0,1 14,13.5A1,1 0 0,1 13,12.5A1,1 0 0,1 14,11.5M18,11.5A1,1 0 0,1 19,12.5A1,1 0 0,1 18,13.5A1,1 0 0,1 17,12.5A1,1 0 0,1 18,11.5Z" />
+                            </svg>
+                        </s-icon>
+                    </s-icon-button>
+                    <div >
+                        <img src="wechat-qr-code.png" style="width: auto; width: 256px; border-radius: 16px;">
+                    </div>
+                </s-popup>
+                <s-icon-button onclick="openMyX()">
+                    <s-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+                        </svg>
+                    </s-icon>
+                </s-icon-button>
+
+                <s-icon-button onclick="sendMailToMe()">
+                    <s-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <title>email-fast</title>
+                            <path
+                                d="M22 5.5H9C7.9 5.5 7 6.4 7 7.5V16.5C7 17.61 7.9 18.5 9 18.5H22C23.11 18.5 24 17.61 24 16.5V7.5C24 6.4 23.11 5.5 22 5.5M22 9.17L15.5 12.5L9 9.17V7.5L15.5 10.81L22 7.5V9.17M5 16.5C5 16.67 5.03 16.83 5.05 17H1C.448 17 0 16.55 0 16S.448 15 1 15H5V16.5M3 7H5.05C5.03 7.17 5 7.33 5 7.5V9H3C2.45 9 2 8.55 2 8S2.45 7 3 7M1 12C1 11.45 1.45 11 2 11H5V13H2C1.45 13 1 12.55 1 12Z" />
+                        </svg>
+                    </s-icon>
+                </s-icon-button>
+                <s-icon-button onclick="buyMeACoffee()">
+                    <s-icon>
+                        <svg t="1719235052681" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="18061" width="200" height="200">
+                            <path
+                                d="M928 128h-32l-46.24-92.5C838.8 13.75 816.8 0 792.6 0H231.6C207.26 0 185.26 13.75 174.26 35.5L128 128H96C78.25 128 64 142.26 64 160v64c0 17.8 14.25 32 32 32h832c17.8 0 32-14.2 32-32V160c0-17.74-14.2-32-32-32zM202.64 832h618.8l26.66-320H174.2l28.44 320z"
+                                p-id="18062"></path>
+                            <path
+                                d="M213.76 965.2c2.74 33.4 30.5 58.8 63.84 58.8h469c33.24 0 61-25.5 63.76-58.76L821.4 832H202.64l11.12 133.2zM154.66 256l21.32 256h672l21.32-256H154.66z"
+                                opacity=".4" p-id="18063"></path>
+                        </svg>
+                    </s-icon>
+                </s-icon-button>
+            </div>
 
         </div>
     </s-page>
