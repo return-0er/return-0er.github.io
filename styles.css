@@ -35,8 +35,12 @@
     margin-top: 160px;
 }
 
-#repoInput {
-    width: 480px;
+.repoTextField {
+    width: 100%;
+    max-width: 480px;
+    margin: 16px;
+
+    box-sizing: border-box;
 }
 
 .footer {
