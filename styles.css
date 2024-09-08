@@ -38,9 +38,11 @@
 .repoTextField {
     width: 100%;
     max-width: 480px;
+    height: 48px;
     margin: 16px;
 
     box-sizing: border-box;
+    max-lines: 1;
 }
 
 .footer {
